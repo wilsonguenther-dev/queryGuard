@@ -6,6 +6,8 @@ Catch the silent failures Supabase's dashboard misses. Instrument queries, group
 
 ![QueryGuard](https://img.shields.io/badge/QueryGuard-v0.1-red?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Supabase](https://img.shields.io/badge/Supabase-ready-green?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 
+> **Created by [Wilson Guenther](https://drivia.consulting)** — extracted from the Drivia LMS platform after getting tired of silent Supabase failures nobody could see.
+
 ---
 
 ## Why QueryGuard exists
@@ -15,8 +17,6 @@ Supabase apps fail silently. PostgREST returns a 403 without throwing. An RLS po
 Supabase's own dashboard shows raw logs — but it doesn't group failures, score their impact, detect regressions, or tell you which users were affected.
 
 QueryGuard is the observability layer that sits between your app and Supabase and makes these failures visible, grouped, and actionable.
-
----
 
 ---
 
@@ -354,7 +354,7 @@ npm start
 - [ ] **GitHub integration** — Auto-open issues on new regressions
 - [ ] **Mobile app** — React Native dashboard for on-call engineers
 - [ ] **OpenTelemetry** — OTEL trace correlation
-- [ ] **npm package** — `npm install queryguard` drop-in SDK
+- [x] **npm package** — `npm install queryguard` — shipped in v0.1.0
 
 ---
 
@@ -366,6 +366,8 @@ MIT — use it, sell it, ship it.
 
 ## Built by
 
-Wilson Guenther @ [Drivia Consulting](https://drivia.consulting)
+**Wilson Guenther** — [@wilsonguenther-dev](https://github.com/wilsonguenther-dev) · [Drivia Consulting](https://drivia.consulting)
 
-*QueryGuard was extracted from the Drivia LMS platform where it monitors 100+ Supabase tables in production.*
+QueryGuard was extracted from the [Drivia](https://drivia.consulting) LMS platform after getting tired of silent Supabase failures that affected real users with zero visibility. Built it. Packaged it. Shipped it.
+
+If this helps you — star the repo, open issues, and tell people about it.

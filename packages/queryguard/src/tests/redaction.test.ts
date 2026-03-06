@@ -104,14 +104,17 @@ describe("sanitizeMetadata", () => {
   });
 
   it("caps depth at 2 levels", () => {
+    // depth 0: { a: ... }
+    // depth 1: { b: ... }
+    // depth 2: { c: ... }
+    // depth 3: safeSerialize called with depth=3 > 2 → { _truncated: true }
     const result = sanitizeMetadata({
       a: { b: { c: { d: "deep" } } }
     });
-    const nested = result?.a as Record<string, unknown>;
-    expect(nested.b).toBeDefined();
-    // depth 3 should be truncated
-    const nestedB = nested.b as Record<string, unknown>;
-    expect(nestedB._truncated).toBe(true);
+    const a = result?.a as Record<string, unknown>;
+    const b = a?.b as Record<string, unknown>;
+    const c = b?.c as Record<string, unknown>;
+    expect(c._truncated).toBe(true);
   });
 
   it("removes undefined values", () => {

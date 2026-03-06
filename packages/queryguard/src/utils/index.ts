@@ -26,7 +26,6 @@ export function isServer(): boolean {
 
 export function isEdgeRuntime(): boolean {
   return typeof process !== "undefined" &&
-    // @ts-expect-error — edge runtime sets this
     process.env.NEXT_RUNTIME === "edge";
 }
 

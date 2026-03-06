@@ -1,7 +1,7 @@
 {
-  "name": "queryguard",
+  "name": "@wilsonguenther/queryguard",
   "version": "0.1.0",
-  "description": "Drop-in observability SDK for Supabase apps. Catches silent failures, RLS 403s, slow queries, and regressions.",
+  "description": "Drop-in observability SDK for Supabase apps. Catches silent failures, RLS 403s, slow queries, and regressions — by Wilson Guenther.",
   "license": "MIT",
   "author": "Wilson Guenther <wilson@drivia.consulting>",
   "repository": {

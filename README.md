@@ -2,21 +2,37 @@
 
 **Drop-in observability for Supabase apps.**
 
-Catch the silent failures Supabase's dashboard misses. Instrument queries, group issues, detect regressions, and surface impact — without changing how you write Supabase code.
-
-![QueryGuard](https://img.shields.io/badge/QueryGuard-v0.1-red?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Supabase](https://img.shields.io/badge/Supabase-ready-green?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
-
-> **Created by [Wilson Guenther](https://drivia.consulting)** — extracted from the Drivia LMS platform after getting tired of silent Supabase failures nobody could see.
+![QueryGuard](https://img.shields.io/badge/@wilsonguenther%2Fqueryguard-v0.1.0-red?style=flat-square) ![Supabase](https://img.shields.io/badge/Supabase-ready-green?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 
 ---
 
-## Why QueryGuard exists
+## The origin story
 
-Supabase apps fail silently. PostgREST returns a 403 without throwing. An RLS policy blocks a user and nobody finds out. A query takes 8 seconds but the UI just hangs. An edge function fails and returns `null` instead of an error.
+I built [Drivia](https://drivia.consulting) — a full-stack LMS platform on Supabase. Users were hitting broken screens. Data wasn't loading. Nobody knew why.
 
-Supabase's own dashboard shows raw logs — but it doesn't group failures, score their impact, detect regressions, or tell you which users were affected.
+Supabase's dashboard showed raw logs. Thousands of them. No grouping. No "this is the one that broke 47 users." No way to know if a bug was new or something we'd already fixed. RLS policies were silently blocking queries and returning empty arrays instead of errors — so the UI just... showed nothing. No exception. No alert. Nothing.
 
-QueryGuard is the observability layer that sits between your app and Supabase and makes these failures visible, grouped, and actionable.
+I got annoyed. I built this.
+
+**Wilson Guenther** — Founder, [Drivia Consulting](https://drivia.consulting)
+[LinkedIn](https://www.linkedin.com/in/wilsonguenther) · [GitHub](https://github.com/wilsonguenther-dev) · [npm](https://www.npmjs.com/package/@wilsonguenther/queryguard)
+
+---
+
+## What QueryGuard actually does
+
+It sits between your app and Supabase and catches what the Supabase dashboard misses:
+
+- **Silent RLS 403s** — PostgREST returns 403 without throwing. Your UI shows nothing. QueryGuard catches it, logs it, groups it, scores it.
+- **Slow queries** — Any Supabase call over 3 seconds is flagged automatically.
+- **Edge function failures** — Failed `functions/v1/` calls caught and grouped.
+- **Auth failures** — Broken token refreshes, unexpected 4xx on `/auth/v1/`.
+- **Empty result anomalies** — A query returns `[]` on a table that should have data for this user? That's a bug. QueryGuard sees it.
+- **RPC failures** — Failed `supabase.rpc()` calls with full context.
+- **Client JS errors** — Unhandled exceptions and promise rejections.
+- **Regressions** — A bug you already fixed comes back? QueryGuard reopens the issue automatically.
+
+All grouped by fingerprint. One issue per bug, not one row per user.
 
 ---
 

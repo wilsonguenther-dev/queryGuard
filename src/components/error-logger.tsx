@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { getBreadcrumbs, initBreadcrumbTracker } from "@/lib/supabase/breadcrumb-tracker";
-import { startCanary } from "@/lib/supabase/query-guard";
+import { getBreadcrumbs, initBreadcrumbTracker } from "@/lib/breadcrumb-tracker";
+import { startCanary } from "@/lib/query-guard";
 
 /**
  * Global error logger — catches unhandled errors and promise rejections

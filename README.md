@@ -1,8 +1,22 @@
 # QueryGuard
 
-**Full-stack observability for Supabase apps.** Drop-in error monitoring that catches what Supabase's dashboard misses — silent RLS 403s, slow queries, edge function failures, auth errors, and regressions — all grouped, fingerprinted, and scored by impact.
+**Drop-in observability for Supabase apps.**
 
-![QueryGuard Dashboard](https://img.shields.io/badge/QueryGuard-v3-red?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Supabase](https://img.shields.io/badge/Supabase-ready-green?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+Catch the silent failures Supabase's dashboard misses. Instrument queries, group issues, detect regressions, and surface impact — without changing how you write Supabase code.
+
+![QueryGuard](https://img.shields.io/badge/QueryGuard-v0.1-red?style=flat-square) ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square) ![Supabase](https://img.shields.io/badge/Supabase-ready-green?style=flat-square) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+
+---
+
+## Why QueryGuard exists
+
+Supabase apps fail silently. PostgREST returns a 403 without throwing. An RLS policy blocks a user and nobody finds out. A query takes 8 seconds but the UI just hangs. An edge function fails and returns `null` instead of an error.
+
+Supabase's own dashboard shows raw logs — but it doesn't group failures, score their impact, detect regressions, or tell you which users were affected.
+
+QueryGuard is the observability layer that sits between your app and Supabase and makes these failures visible, grouped, and actionable.
+
+---
 
 ---
 
